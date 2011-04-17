@@ -1,0 +1,29 @@
+DeLorean is a clone of Apple's Time Machine product, for Linux/Un*x systems,
+written in Perl.
+
+It allows you to save daily backups of one or more files or directories on
+your system. To save space, it takes advantage of the filesystem's hard link
+feature. A hard link allows two or more files to share the same data. So, if
+you've got a 1 megabyte file, and you don't make any changes to it for a
+month, you only need a total of 1 megabyte to store the 30 daily copies of
+that file. If you delete one of the daily copies, the others will survive
+(until you remove the last one).
+
+By creating daily snapshots, Time Machine allows you to "go back in time"
+and view all of your files and directories as they existed at some point in
+the past. In addition to the daily backups, DeLorean will automatically save
+a weekly snapshot every Monday, and a monthly snapshot on the first day of
+each month.
+
+It's easy to use -- just edit the sample_usage.sh script to fit your needs,
+and put it in your daily crontab. The only things you'll need to change are
+the data directory(ies) that you want it to protect, and the backup
+directory where you want to store the snapshots. (Obviously, the latter
+should not be a subdirectory of the former.) It would be a good idea to
+store your backup directory on a separate drive, such as an external hard
+drive or a network share.
+
+You should not make any changes to the files in your backup directory,
+though, or you will change every backed-up copy of that file! To restore an
+old copy of a file that you need, you must first copy it back to your data
+directory (or somewhere else on your system) and edit it there.
